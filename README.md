@@ -1,99 +1,159 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# CRUD Básico com NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este repositório apresenta um exemplo básico de um sistema CRUD (Create, Read, Update, Delete) usando o framework NestJS, desenvolvido para a disciplina de **Programação para Internet II** do curso de **Análise e Desenvolvimento de Sistemas** no Instituto Federal do Piauí (IFPI).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Informações do Projeto
+- **Aluno:** Matheus da Silva
+- **Professor:** Jesiel Viana
+- **Módulo:** IV
+- **Disciplina:** Programação para Internet II
 
-## Description
+## Objetivo
+Este projeto foi desenvolvido como introdução à disciplina, na qual foi solicitado que cada aluno implementasse uma aplicação prática usando uma linguagem ou framework de sua escolha.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## Sobre o NestJS
+[NestJS](https://nestjs.com/) é um framework poderoso e escalável para desenvolvimento de aplicações server-side em **Node.js**, baseado em **TypeScript** (com suporte a JavaScript). O NestJS oferece uma arquitetura modular que combina práticas de:
+- **Programação Orientada a Objetos (OOP)**
+- **Programação Funcional (FP)**
+- **Programação Funcional Reativa (FRP)**
 
-```bash
-$ npm install
+Isso facilita a construção de sistemas escaláveis e mantém a modularidade, sendo ideal para desenvolvimento de APIs.
+
+## Entidade de Exemplo: `Produto`
+Para ilustrar o CRUD, foi utilizada uma entidade chamada `Produto`, definida como uma `interface` com os seguintes atributos:
+
+```typescript
+export interface Produto {
+    id: number;
+    nome: string;
+    preco: number;
+    quantidade: number;
+}
 ```
 
-## Compile and run the project
+### Operações CRUD Implementadas:
+1. **Criação** de novos produtos.
+2. **Leitura** de produtos existentes.
+3. **Atualização** de produtos.
+4. **Exclusão** de produtos.
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## Estrutura do Projeto
 
-# production mode
-$ npm run start:prod
+O projeto segue a estrutura padrão do NestJS, dividida em três componentes principais:
+
+- **Controllers:** Gerenciam as requisições recebidas e enviam as respostas ao cliente. Em NestJS, os controllers definem as rotas e vinculam cada rota a uma função específica.
+  
+- **Modules:** Cada aplicação possui pelo menos um módulo raiz, que serve como ponto de entrada para o sistema de injeção de dependências do NestJS. Módulos organizam e agrupam funcionalidades relacionadas.
+  
+- **Service:** Contém a lógica de negócios e é responsável por acessar e manipular os dados. O Service age como uma camada de abstração para a manipulação de dados, isolando a lógica dos controllers.
+
+### Injeção de Dependência
+NestJS utiliza o padrão de projeto **Injeção de Dependência** para gerenciar as dependências entre as classes. Veja o exemplo abaixo em um controller de produtos:
+
+```typescript
+constructor(private produtoService: ProdutosService) {}
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## Configuração e Execução
 
-# e2e tests
-$ npm run test:e2e
+### Requisitos
+- Node.js e NPM instalados
+- Editor de código (recomendado: VS Code)
 
-# test coverage
-$ npm run test:cov
+### Passos para Rodar o Projeto Localmente
+
+1. **Clone o Repositório**
+
+2. **Instale as Dependências**
+
+    ```bash
+    npm install
+    ```
+
+3. **Execute a Aplicação**
+
+    ```bash
+    npm run start
+    ```
+
+4. **Acesse a API**
+
+    A API estará disponível em: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Testes de Requisições
+
+Abaixo estão alguns exemplos de requisições para testar as operações CRUD da entidade `Produto`. Use ferramentas como [Postman](https://www.postman.com/) para realizar as requisições.
+
+### Endpoints Disponíveis
+
+#### 1. **Listar todos os produtos**
+
+- **Método:** GET
+- **Endpoint:** `/produtos`
+- **Descrição:** Recupera a lista de todos os produtos cadastrados.
+
+```http
+GET http://localhost:3000/produtos
 ```
 
-## Deployment
+#### 2. **Criar um novo produto**
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- **Método:** POST
+- **Endpoint:** `/produtos`
+- **Descrição:** Cria um novo produto com os dados fornecidos no corpo da requisição.
+- **Corpo da Requisição:**
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+    ```json
+    {
+        "nome": "Produto Exemplo",
+        "preco": 100,
+        "quantidade": 20
+    }
+    ```
 
-```bash
-$ npm install -g mau
-$ mau deploy
+#### 3. **Atualizar um produto existente**
+
+- **Método:** PATCH
+- **Endpoint:** `/produtos/{id}`
+- **Descrição:** Atualiza as informações de um produto existente com o ID especificado. O método PATCH permite modificações parciais de um recurso.
+- **Corpo da Requisição:**
+
+    ```json
+    {
+        "nome": "Produto Atualizado",
+        "preco": 90,
+        "quantidade": 10
+    }
+    ```
+
+#### 4. **Deletar um produto**
+
+- **Método:** DELETE
+- **Endpoint:** `/produtos/{id}`
+- **Descrição:** Remove o produto com o ID especificado.
+
+```http
+DELETE http://localhost:3000/produtos/1
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## Considerações Finais
 
-Check out a few resources that may come in handy when working with NestJS:
+Este projeto foi criado com fins didáticos, servindo como introdução à criação de CRUDs usando o NestJS. Em um ambiente de produção, recomenda-se seguir práticas adicionais, como:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+- Validações de dados
+- Tratamento adequado de erros
+- Testes unitários e de integração
 
-## Support
+## Licença
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Este projeto segue a licença [MIT](https://github.com/nestjs/nest/blob/master/LICENSE), conforme a licença padrão do NestJS.
