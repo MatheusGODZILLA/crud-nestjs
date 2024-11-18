@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { Produto } from '../interfaces/produto.interface';
 import { ProdutosService } from './produtos.service';
 
@@ -21,7 +21,7 @@ export class ProdutosController {
         return this.produtoService.create(produto);
     }
 
-    @Patch(':id')
+    @Put(':id')
     update(@Param('id', ParseIntPipe) id: number, @Body() produto: Produto): Produto {
         return this.produtoService.update(id, produto);
     }
