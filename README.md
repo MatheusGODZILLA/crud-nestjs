@@ -121,9 +121,9 @@ GET http://localhost:3000/produtos
 
 #### 3. **Atualizar um produto existente**
 
-- **Método:** PATCH
+- **Método:** PUT
 - **Endpoint:** `/produtos/{id}`
-- **Descrição:** Atualiza as informações de um produto existente com o ID especificado. O método PATCH permite modificações parciais de um recurso.
+- **Descrição:** Atualiza as informações de um produto existente com o ID especificado.
 - **Corpo da Requisição:**
 
     ```json
